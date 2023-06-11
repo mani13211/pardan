@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+}
+body .sidebar {
+  width: 300px;
+  display: grid;
+  z-index: 2;
+  background-image: url("../../../public//Rectangle12.png");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  background-color: rgba(223, 16, 16, 0.6588235294);
+  color: #fff;
+  position: fixed;
+  height: 100%;
+  padding-top: 2rem;
+}
+body .sidebar .logo {
+  text-align: center;
+  font-size: xx-large;
+  font-family: "Euphoria Script", cursive;
+}
+body .sidebar .mid-section {
+  text-align: center;
+}
+body .sidebar .mid-section h2 {
+  font-size: xx-large;
+  font-family: "Euphoria Script", cursive;
+}
+body .sidebar .bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .sidebar .bottom-section a {
+  color: white;
+  text-decoration: none;
+  font-size: large;
+}
+body .main {
+  width: calc(100% - 300px);
+  margin-left: 300px;
+  padding: 0rem 2rem;
+}
+body .main .navbar {
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+body .main .navbar ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0rem 0rem;
+  margin-bottom: 0rem;
+}
+body .main .navbar ul li {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: 0.4s all;
+  cursor: pointer;
+}
+body .main .navbar ul li:hover {
+  color: rgba(223, 16, 16, 0.6588235294);
+}
+
+.gallary {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-width: 33%;
+  -moz-column-width: 33%;
+  column-width: 33%;
+  padding: 0 12px;
+}
+
+.gallary .pics {
+  -webkit-transform: all 350ms ease;
+  transition: all 350ms ease;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.gallary .pics:hover {
+  filter: opacity(0.8);
+}
+
+@media (max-width: 991.98px) {
+  .gallary {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+@media (max-width: 575.98px) {
+  .gallary {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+  }
+}
