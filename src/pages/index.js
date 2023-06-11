@@ -1,5 +1,7 @@
 import { Main } from 'next/document'
 import Head from 'next/head'
+import { useState } from 'react'
+import {ImCross} from 'react-icons/im';
 import Navbar from './components/navbar'
 import img1 from "../sample_images/1.jpg"
 import img2 from "../sample_images/2.jpg"
@@ -49,7 +51,12 @@ export default function Home() {
 
 ]
     
-console.log(data)
+const [model, setmodel] = useState(false)
+const [tempimgsrc, settempimgsrc] = useState('')
+const getImage=(imgscr)=>{
+  settempimgsrc(imgscr)
+  setmodel(true)
+}
   
   return (
     <>
@@ -64,12 +71,16 @@ console.log(data)
         <link href="https://fonts.googleapis.com/css2?family=Euphoria+Script&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"/>
         </Head>
       
+      <div className={model? "model open":"model"}>
+        <img src={tempimgsrc}/>
+        <ImCross onClick={()=>{setmodel(false)}}/>
+      </div>
           <div className='main '>
             <Navbar/>
             <div className='gallary'>
               {data.map((item,index)=>{
                 return(
-                  <div className='pics' key={index}>
+                  <div className='pics' key={index} onClick={()=>getImage(item.imgsrc.src)}>
                   <img src={item.imgsrc.src} style={{width:"100%"}}/>
                 </div>
                 
