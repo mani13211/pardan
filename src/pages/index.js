@@ -70,7 +70,7 @@ const getImage=(imgscr)=>{
           <div className='main '>
             <Mobileheader/>
             <Navbar/>
-            <div className='gallary'>
+            <div className='gallary mt-3'>
               {data.map((item,index)=>{
                 return(
                   <div className='pics' key={index} onClick={()=>getImage(item.imgsrc.src)}>
