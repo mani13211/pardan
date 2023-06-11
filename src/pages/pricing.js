@@ -9,12 +9,12 @@ function Pricing() {
     <Mobileheader/>
     <Navbar/>
     <div className='pricing-section'>
-        <h2>Pricing</h2>
+        <h2 className='mt-3'>Pricing</h2>
         <div className='card container-md mt-5'>
             <div className='row p-3'>
                 <div className='col-md-4'>
                     <div className='card'>
-                            <div class="card-body text-center">
+                            <div className="card-body text-center">
                                <p className='mb-1'>Standard</p>
                                <h1>₹500</h1>
                                <img className='card-innerimage img-fluid mb-5' src="standard.png"/>
@@ -27,7 +27,7 @@ function Pricing() {
                 </div>
                 <div className='col-md-4'>
                     <div className='card'>
-                            <div class="card-body text-center">
+                            <div className="card-body text-center">
                                <p className='mb-1'> Premium</p>
                                <h1>₹500</h1>
                                <img className='card-innerimage img-fluid mb-5' src="fast.png"/>
@@ -40,7 +40,7 @@ function Pricing() {
                 </div>
                 <div className='col-md-4'>
                     <div className=''>
-                            <div class="card-body">
+                            <div className="card-body">
                               <p><b>Each Pack Includes</b></p>
 
                                 <ul>
