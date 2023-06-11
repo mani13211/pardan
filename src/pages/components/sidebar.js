@@ -14,7 +14,7 @@ function Sidebar() {
                     <h2>rk Draws</h2>
            </div>
            <div className='bottom-section'>
-            <Link href="/">Instagram</Link>
+            <Link href="https://www.instagram.com/smile.draws/">Instagram</Link>
            </div>
         </div>
   )
