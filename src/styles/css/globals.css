@@ -43,6 +43,7 @@ body .sidebar .bottom-section a {
 }
 body .mobileheader {
   display: none;
+  position: relative;
 }
 body .mobileheader .logo {
   text-align: center;
