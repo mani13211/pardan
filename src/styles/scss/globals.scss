@@ -87,7 +87,7 @@ $font-1:'Euphoria Script', cursive;
             margin-bottom: 1rem;
             width: 100%;
             display: flex;
-            justify-content: end;
+            justify-content: flex-end;
             //border-bottom: 1px solid grey;
             ul{
                 list-style-type: none;
@@ -327,4 +327,81 @@ $font-1:'Euphoria Script', cursive;
             }
         }
     }
+}
+.login-container{
+    padding: 5rem  ;
+    form{
+        width: 350px;
+        margin: auto;
+        p.Logo {
+            font-size: 22px;
+            color: #dc3545;
+            font-weight: 600;
+        }
+        button{
+            background-color: #dc3545;
+            color: white;
+            
+        }
+        
+    }
+    
+}
+.admin-container{
+    .admin-cards-galary{
+        .mytable{
+           
+            background-color: #7070700d;
+            text-align: center;
+            thead{
+                background-color: #70707033;
+                
+                tr{
+                    th{
+                        padding:0.4rem 0;
+                    }
+                }
+            }
+            tbody{
+                
+                tr{
+                    td{
+                        padding:0.7rem 0;
+
+                        .mycard{
+                            display: flex;
+                            justify-content:center;
+                            align-items: center;
+       
+                            .img-div{
+                                height: 100px;
+                                width: 100px;
+                                display: flex;
+                                justify-self: center;
+                                border:1px solid #0b0b0b1f;
+                                border-radius: 50%;
+                                margin-right:1rem;
+                                align-items: center;
+                                background-color: white;
+                                img{
+                                    height: 90px;
+                                    border-radius: 50px;
+                                    width: 90px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       
+        .upload-div{
+            .preview-img{
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+    
+
 }

@@ -10,7 +10,7 @@ function Contact() {
     const [disable, setdisable] = useState(true)
    
         // Code that requires access to the document object
-        
+       
     const handleChange=(e)=>{
         // if(name>4 && email>7 && phone>10 && message>4){
         //     setdisable(false)
@@ -32,8 +32,9 @@ function Contact() {
       
     }
     const handleSubmit=(e)=>{
+        console.log("my working")
             e.preventDefault() 
-           
+           alert("We will contact u soon")
             setname("")
             setemail("")
             setphone("")
@@ -50,24 +51,24 @@ function Contact() {
     <form className='p-3' onSubmit={handleSubmit}>
     <h4  className='mb-3'>Fill Your Details </h4>
             <div className="form-outline mb-4">
-            <label className="form-label" for="name">Name</label>
+            <label className="form-label" htmlFor="name">Name</label>
                 <input type="text"  onChange={handleChange}  value={ name}  name="name" id="name" className="form-control" />
             </div>
 
 
             <div className="form-outline mb-4">
-            <label className="form-label" for="email">Email address</label>
+            <label className="form-label"htmlFor="email">Email address</label>
                 <input type="email"  onChange={handleChange}  value={ email}  name="email" id="email" className="form-control" />
             </div>
             <div className="form-outline mb-4">
-            <label className="form-label" for="phone">Phone</label>
+            <label className="form-label" htmlFor="phone">Phone</label>
                 <input  onChange={handleChange}  value={phone}  type="tel" name="phone" id="phone" className="form-control" />
             </div>
 
 
             <div className="form-outline mb-4">
-            <label className="form-label" for="message">Message</label>
-                <textarea onChange={handleChange}   name="message " className="form-control" id="message" rows="4">{ message}</textarea>
+            <label className="form-label" htmlFor="message">Message</label>
+                <textarea onChange={handleChange} value={message}  name="message" className="form-control" id="message" rows="4"></textarea>
 
             </div>
 
