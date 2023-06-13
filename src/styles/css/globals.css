@@ -274,6 +274,18 @@ body .main .submit-btn {
   color: white;
 }
 
+@media (max-width: 575.98px) {
+  .login-container {
+    padding: 1rem !important;
+  }
+  .login-container form {
+    width: 100% !important;
+    padding: 0rem 0.5rem;
+  }
+  .login-container form p.Logo {
+    font-size: 18px;
+  }
+}
 .admin-container .admin-cards-galary .mytable {
   background-color: rgba(112, 112, 112, 0.0509803922);
   text-align: center;
