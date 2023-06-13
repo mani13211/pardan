@@ -20,7 +20,7 @@ function Login() {
     const handlesubmit = async (e) => {
         let data = { email: email, password: password }
         e.preventDefault()
-        const response = await fetch("http://127.0.0.1:3000/api/login", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
             method: "POST", // or 'PUT'
             headers: {
                 "Content-Type": "application/json",
@@ -45,7 +45,7 @@ function Login() {
                 setpassword("")
 
                 setTimeout(() => {
-                    router.push("http://127.0.0.1:3000/admin")
+                    router.push(`${process.env.NEXT_PUBLIC_HOST}/admin`)
                   }, 1000);
 
         }else{
