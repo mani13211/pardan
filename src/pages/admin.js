@@ -88,7 +88,6 @@ function Admin({data}) {
 
   }
 
-
   return (
     <div className='main '>
       <Mobileheader />
@@ -161,11 +160,24 @@ function Admin({data}) {
   )
 }
 
-export async function getServerSideProp(context) {
+// export async function getServerSideProps(context) {
+//   // Fetch data from external API
+//   //   if(! mongoose.connections[0].readyState){
+// //     await mongoose.connect("mongodb+srv://paymentsetup:9815897261@cluster0.xayu3wr.mongodb.net/")
+// //   }
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/data`)
+//   const data = await res.json()
+ 
+//   // Pass data to the page via props
+//   return { props: { data } }
+// }
+ 
+export async function getServerSideProps(context) {
   if(! mongoose.connections[0].readyState){
     await mongoose.connect("mongodb+srv://paymentsetup:9815897261@cluster0.xayu3wr.mongodb.net/")
   }
   const collection = await Collection.find({})
+  console.log(collection)
  
   return { props:{data:JSON.parse(JSON.stringify(collection)) }}
 }
