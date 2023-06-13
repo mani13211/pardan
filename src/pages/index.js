@@ -13,6 +13,7 @@ import img6 from "../sample_images/1.jpg"
 import img7 from "../sample_images/2.jpg"
 import img8 from "../sample_images/3.jpg"
 import img9 from "../sample_images/4.jpg"
+import Image from 'next/image';
 import img10 from "../sample_images/5.jpg"
 
 
@@ -74,7 +75,10 @@ const getImage=(imgscr)=>{
               {data.map((item,index)=>{
                 return(
                   <div className='pics' key={index} onClick={()=>getImage(item.imgsrc.src)}>
-                  <img src={item.imgsrc.src} style={{width:"100%"}}/>
+                  <Image src={item.imgsrc.src}  width={0}
+                height={0}
+                sizes="100vw"
+                style={{ width: '100%', height: 'auto' }}    alt= "" />
                 </div>
                 
 

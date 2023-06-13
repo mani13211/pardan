@@ -105,7 +105,7 @@ function Admin({data}) {
                 value={image}
                 type="file"
                 accept="image/png, image/gif, image/jpeg" />
-              <img className='preview-img' src={out} />
+              <img className='preview-img' alt= "preview-img"src={out} />
               <button className="btn btn-danger">Submit</button>
             </form>
           </div>
