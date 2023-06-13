@@ -163,7 +163,7 @@ function Admin({data}) {
 
 export async function getStaticProps(context) {
   if(! mongoose.connections[0].readyState){
-    await mongoose.connect(process.env.NEXT_PUBLIC_MONGO_URI)
+    await mongoose.connect("mongodb+srv://paymentsetup:9815897261@cluster0.xayu3wr.mongodb.net/")
   }
   const collection = await Collection.find({})
  
