@@ -2,56 +2,15 @@ import { Main } from 'next/document'
 import Head from 'next/head'
 import { useState } from 'react'
 import Mobileheader from './components/mobileheader';
+import Collection from '../../models.js/Collection';
 import {ImCross} from 'react-icons/im';
-import Navbar from './components/navbar'
-import img1 from "../sample_images/1.jpg"
-import img2 from "../sample_images/2.jpg"
-import img3 from "../sample_images/3.jpg"
-import img4 from "../sample_images/4.jpg"
-import img5 from "../sample_images/5.jpg"
-import img6 from "../sample_images/1.jpg"
-import img7 from "../sample_images/2.jpg"
-import img8 from "../sample_images/3.jpg"
-import img9 from "../sample_images/4.jpg"
 import Image from 'next/image';
-import img10 from "../sample_images/5.jpg"
+import mongoose from 'mongoose';
+import Navbar from './components/navbar'
 
 
-export default function Home() {
-  let data= [{
-    id:1,
-    imgsrc:img1
-  },{
-    id:2,
-    imgsrc:img2
-  },{
-    id:3,
-    imgsrc:img3
-  },{
-    id:4,
-    imgsrc:img4
-  },{
-    id:5,
-    imgsrc:img5
-  },{
-    id:6,
-    imgsrc:img1
-  },{
-    id:7,
-    imgsrc:img2
-  },{
-    id:8,
-    imgsrc:img3
-  },{
-    id:9,
-    imgsrc:img4
-  },{
-    id:10,
-    imgsrc:img5
-  }
+const Home=({data})=> {
 
-
-]
     
 const [model, setmodel] = useState(false)
 const [tempimgsrc, settempimgsrc] = useState('')
@@ -72,10 +31,10 @@ const getImage=(imgscr)=>{
             <Mobileheader/>
             <Navbar/>
             <div className='gallary mt-3'>
-              {data.map((item,index)=>{
+              {data.map((i,index)=>{
                 return(
-                  <div className='pics' key={index} onClick={()=>getImage(item.imgsrc.src)}>
-                  <Image src={item.imgsrc.src}  width={0}
+                  <div className='pics' key={index} onClick={()=>getImage(i.img_path)}>
+                  <Image src={i.img_path}  width={0}
                 height={0}
                 sizes="100vw"
                 style={{ width: '100%', height: 'auto' }}    alt= "" />
@@ -96,3 +55,12 @@ const getImage=(imgscr)=>{
     </>
   )
 }
+export async function getServerSideProps(context) {
+  if(! mongoose.connections[0].readyState){
+    await mongoose.connect("mongodb+srv://paymentsetup:9815897261@cluster0.xayu3wr.mongodb.net/")
+  }
+  const collection = await Collection.find({})
+ 
+  return { props:{data:JSON.parse(JSON.stringify(collection)) }}
+}
+export default  Home
