@@ -99,12 +99,14 @@ function Admin({data}) {
           <h3>Upload new Image</h3>
           <div className='upload-div'>
             <form onSubmit={handleSubmit}>
+
               <input name="img_path"
                 onChange={handleChange}
                 value={image}
                 type="file"
                 accept="image/png, image/gif, image/jpeg" />
-              <img className='preview-img' alt= "preview-img"src={out} />
+              {out && <img className='preview-img' alt= "preview-img"src={out} /> }
+              
               <button className="btn btn-danger">Submit</button>
             </form>
           </div>
