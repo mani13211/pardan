@@ -1,7 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 var jwt = require('jsonwebtoken');
 
-export default function handler(req, res) {
+export default   function handler(req, res) {
+
     if(req.method=="POST"){
         let email=req.body.email
         let password=req.body.password

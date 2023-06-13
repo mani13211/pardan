@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
+// const cors = require('cors');
 
 const connectDb = handler =>async(req,res)=>{
+
+//   await cors()(req, res);
+
   if(mongoose.connections[0].readyState){
     return handler(req,res)
   }

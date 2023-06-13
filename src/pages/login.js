@@ -18,50 +18,60 @@ function Login() {
     const [password, setpassword] = useState("")
 
     const handlesubmit = async (e) => {
-        let data = { email: email, password: password }
         e.preventDefault()
-        const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
-            method: "POST", // or 'PUT'
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
-        let res = await response.json()
-       // console.log(res)
-        if(res.success==true){
-            localStorage.setItem("protfolio-token", res.token);
-            toast.success(res.message, {
-                position: "top-right",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-                setemail("")
-                setpassword("")
+        let data = { email: email, password: password }
+        try{
+            const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
+                method: "POST", // or 'PUT'
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            let res = await response.json()
+            if(res.success==true){
+                localStorage.setItem("protfolio-token", res.token);
+                toast.success(res.message, {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+                    setemail("")
+                    setpassword("")
+    
+                    setTimeout(() => {
+                        router.push(`${process.env.NEXT_PUBLIC_HOST}/admin`)
+                      }, 1000);
+    
+            }else{
+                toast.error(res.message, {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+    
+    
+            }
 
-                setTimeout(() => {
-                    router.push(`${process.env.NEXT_PUBLIC_HOST}/admin`)
-                  }, 1000);
-
-        }else{
-            toast.error(res.message, {
-                position: "top-right",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-
+        }catch(error) {
+            alert("some techinacal erros")
+            
+                console.error(error);
 
         }
+        
+       // console.log(res)
+       
 
     }
     const handleChange = (e) => {

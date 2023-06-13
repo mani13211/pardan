@@ -3,6 +3,7 @@ import Collection from "../../../models.js/Collection";
 import connectDb from "../../../middleware/middleware"
 
 const handler= async(req,res)=>{
+
   let id=Math.floor(Math.random() * Date.now());
   if(req.method == "POST"){
    new Collection({img_path:req.body.img_path,id:id}).save();

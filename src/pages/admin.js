@@ -179,7 +179,6 @@ export async function getServerSideProps(context) {
     await mongoose.connect("mongodb+srv://paymentsetup:9815897261@cluster0.xayu3wr.mongodb.net/")
   }
   const collection = await Collection.find({})
-  console.log(collection)
  
   return { props:{data:JSON.parse(JSON.stringify(collection)) }}
 }
