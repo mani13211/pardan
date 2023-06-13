@@ -161,7 +161,7 @@ function Admin({data}) {
   )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProp(context) {
   if(! mongoose.connections[0].readyState){
     await mongoose.connect("mongodb+srv://paymentsetup:9815897261@cluster0.xayu3wr.mongodb.net/")
   }
