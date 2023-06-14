@@ -6,6 +6,7 @@ const nextConfig = {
   },
   experimental: {
     appDir: false,
+    largePageDataBytes: 512 * 100000,
   },
   
   
