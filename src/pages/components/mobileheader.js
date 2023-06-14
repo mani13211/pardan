@@ -8,7 +8,7 @@ function Mobileheader() {
     <div className='mobileheader pt-1'>
          <div className='logo'>
                 <ImPencil2 className='me-2'/>
-                <i className="bi bi-palette"></i><span>RKDraws</span>
+                <i className="bi bi-palette"></i><span>SmileDraws</span>
                 {/* <Link className="insta_a" href="https://www.instagram.com/smile.draws/"><BsInstagram /></Link> */}
            </div>
     </div>
