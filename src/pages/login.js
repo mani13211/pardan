@@ -120,7 +120,7 @@ function Login() {
 
 
                     <button className="btn btn-danger w-100 py-2" type="submit"> Login</button>
-                    <p className="mt-5 mb-3 text-body-secondary">© Copyright by rk sharma</p>
+                    <p className="mt-5 mb-3 text-body-secondary">© Copyright by SmileDraws</p>
                 </form>
 
             </div>
