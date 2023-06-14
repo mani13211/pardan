@@ -152,7 +152,7 @@ function Admin({ dirs }) {
             <div key={item} className='img-card '>
                <img src={"/images/" + item} className="text-blue-500 hover:underline"/>
                <div className='bottom-section'>
-               <RxCrossCircled onClick={() => deleteItem( item)} className='deletebtn' title='Delete'/>
+               <div onClick={() => deleteItem( item)} className='deletebtn text-xxl' title='Delete'>X</div>
                </div>
             </div>
           ))}
