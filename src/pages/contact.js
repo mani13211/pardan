@@ -8,6 +8,7 @@ function Contact() {
     const [phone, setphone] = useState("")
     const [message, setmessage] = useState("")
     const [disable, setdisable] = useState(true)
+    const [reminder, setreminder] = useState("d-none")
     const handleChange=(e)=>{
         if(e.target.name=="name"){
             setname(e.target.value)
@@ -22,20 +23,27 @@ function Contact() {
             setmessage(e.target.value)
         }
     }
+
+
+    const emailer =async(data)=>{
+      try{
+        let res= await fetch('https://formspree.io/f/xayzrero', {
+          method: 'POST',
+          body: JSON.stringify(data)
+        })
+        console.log(res.json())
+        }
+
+        catch(err){
+          console.log(err)
+        }
+
+    }
     const handleSubmit=async(e)=>{
       const data={name:name,phone:phone,email:email,message:message}
             e.preventDefault() 
-            try{
-            let res= await fetch('https://formspree.io/f/xayzrero', {
-              method: 'POST',
-              body: JSON.stringify(data)
-            })
-            console.log(res.json())
-            }
-
-            catch(err){
-              console.log(err)
-            }
+            emailer(data)
+           
             try {
                 
                 const response = await fetch('/api/contact', {
@@ -54,9 +62,12 @@ function Contact() {
               } catch (error) {
                 console.error('Error  image:', error);
               }
+              setreminder("")
+              setTimeout(() => {
+                setreminder("d-none")
+              }, 5000);
 
-
-           alert("We will contact u soon")
+          // alert("We will contact u soon")
             setname("")
             setemail("")
             setphone("")
@@ -69,6 +80,8 @@ function Contact() {
     <Mobileheader/>
     <Navbar/>
     <div className='container'>
+
+    <div className={`contact-wrapper m-4  ${reminder}`}> We will contact u soon</div>
         
     <form className='p-3' onSubmit={handleSubmit}>
     <h4  className='mb-3'>Fill Your Details </h4>
@@ -97,9 +110,13 @@ function Contact() {
 
 
 
-            <button type="submit"  className="btn submit-btn btn-block mb-4">Send</button>
+            <button type="submit"  className=" btn submit-btn btn-block mb-4">Send</button>
             </form>
+
+           
     </div>
+
+   
       
     </div>
   )
