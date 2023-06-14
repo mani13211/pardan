@@ -18,7 +18,6 @@ const getImage=(imgscr)=>{
   settempimgsrc(imgscr)
   setmodel(true)
 }
-  
   return (
     <>
       
@@ -31,6 +30,7 @@ const getImage=(imgscr)=>{
             <Mobileheader/>
             <Navbar/>
             <div className='gallary mt-3'>
+             
               {data.map((i,index)=>{
                 return(
                   <div className='pics' key={index} onClick={()=>getImage(i.img_path)}>
@@ -39,8 +39,7 @@ const getImage=(imgscr)=>{
                 sizes="100vw"
                 style={{ width: '100%', height: 'auto' }}    alt= "" />
                 </div>
-                
-
+              
               )
               
                 

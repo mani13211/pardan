@@ -1,20 +1,41 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import Collection from "../../../models.js/Collection";
-import connectDb from "../../../middleware/middleware"
+import multer from 'multer';
 
-const handler= async(req,res)=>{
+const fs = require("fs");
+const { promisify } = require("util");
+const pipeline = promisify(require("stream").pipeline);
+// export default handler;
+const upload = multer({
+  dest: "./",
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+});
 
-  let id=Math.floor(Math.random() * Date.now());
-  if(req.method == "POST"){
-   new Collection({img_path:req.body.img_path,id:id}).save();
-    res.status(200).json("recived",req)
-  }
-  else{
-    res.status(200).json("only post applied")
-  }
+const handler = async (req, res) => {
+    console.log(req.body)
+    upload.single('file'), async function(req, res, error) {
+        await pipeline(
+            file.stream,
+            fs.createWriteStream(`${__dirname}/../public/images/${fileName}`)
+          );
+      if (error) {
+        console.error('Error uploading file:', error);
+        return res.status(500).json({ error: 'Error uploading file' });
+      }
   
-}
- 
-
-
-export default  connectDb(handler)
+      // File upload successful
+      return res.status(200).json({ message: 'File uploaded successfully' });
+    };
+  };
+  
+//   export default handler;
+  
+//   router.post("/upload", upload.single("file"), async function(req, res, next) {
+//     const {
+//       file,
+//       body: { name }
+//     } = req;
+  
+//     // const fileName = name + file.detectedFileExtension;
+   
+  
+//     res.send("File uploaded as " + fileName);
+//   });
