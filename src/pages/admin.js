@@ -8,7 +8,6 @@ import path from "path"
 import Link from 'next/link';
 import mongoose from 'mongoose';
 //import Collection from '../../models.js/Collection';
-import {RxCrossCircled} from 'react-icons/Rx';
 import { useState } from 'react'
 import { GiHand } from 'react-icons/gi';
 
