@@ -32,20 +32,6 @@ const getImage=(imgscr)=>{
             <Mobileheader/>
             <Navbar/>
             <div className='gallary mt-3'>
-{/*              
-              {data.map((i,index)=>{
-                return(
-                  <div className='pics' key={index} onClick={()=>getImage(i.img_path)}>
-                  <Image src={i.img_path}  width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: '100%', height: 'auto' }}    alt= "" />
-                </div>
-              
-              )
-              
-                
-              })} */}
                {dirs.map(item => (
 
                   <div className='pics' key={item} onClick={()=>getImage("/images/" + item)}>
@@ -54,9 +40,7 @@ const getImage=(imgscr)=>{
                   sizes="100vw"
                   style={{ width: '100%', height: 'auto' }}    alt= "" />
                   </div>
-                            
-        
-        ))}
+                ))}
 
             </div>
             

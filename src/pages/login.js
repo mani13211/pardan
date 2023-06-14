@@ -106,7 +106,7 @@ function Login() {
             <div className='container login-container
             form-signin w-100 m-auto"'>
                 <form className='' onSubmit={handlesubmit}>
-                    <p className='Logo'>SmileDraws</p>
+                    <p className='Logo'>{process.env.NEXT_PUBLIC_sitename}</p>
                     <h1 className="h3 mb-3 fw-normal">Please Login in</h1>
 
                     <div className="form-floating mb-3">
@@ -120,7 +120,7 @@ function Login() {
 
 
                     <button className="btn btn-danger w-100 py-2" type="submit"> Login</button>
-                    <p className="mt-5 mb-3 text-body-secondary">© Copyright by SmileDraws</p>
+                    <p className="mt-5 mb-3 text-body-secondary">© Copyright by {process.env.NEXT_PUBLIC_sitename}</p>
                 </form>
 
             </div>

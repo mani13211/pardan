@@ -8,15 +8,7 @@ function Contact() {
     const [phone, setphone] = useState("")
     const [message, setmessage] = useState("")
     const [disable, setdisable] = useState(true)
-   
-        // Code that requires access to the document object
-       
     const handleChange=(e)=>{
-        // if(name>4 && email>7 && phone>10 && message>4){
-        //     setdisable(false)
-        //    }else{
-        //        setdisable(true)
-        //    }
         if(e.target.name=="name"){
             setname(e.target.value)
         }
@@ -29,11 +21,41 @@ function Contact() {
         else if(e.target.name=="message"){
             setmessage(e.target.value)
         }
-      
     }
-    const handleSubmit=(e)=>{
-        console.log("my working")
+    const handleSubmit=async(e)=>{
+      const data={name:name,phone:phone,email:email,message:message}
             e.preventDefault() 
+            try{
+            let res= await fetch('https://formspree.io/f/xayzrero', {
+              method: 'POST',
+              body: JSON.stringify(data)
+            })
+            console.log(res.json())
+            }
+
+            catch(err){
+              console.log(err)
+            }
+            try {
+                
+                const response = await fetch('/api/contact', {
+                  method: 'POST',
+                  body: JSON.stringify(data),
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                });
+            
+                if (response.ok) {
+                  console.log('done');
+                } else {
+                  console.error('Failed ');
+                }
+              } catch (error) {
+                console.error('Error  image:', error);
+              }
+
+
            alert("We will contact u soon")
             setname("")
             setemail("")
