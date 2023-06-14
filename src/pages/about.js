@@ -10,7 +10,7 @@ function About() {
             <div className='container mt-3'>
                 <h1>About Me</h1>
                 <h2>Introduction</h2>
-                <p>Hello, I'm RK sharma, a passionate sketch artist specializing in creating intricate and detailed artworks. With a keen eye for capturing emotions and an innate love for art, I strive to bring stories to life through my sketches.</p>
+                <p>Hello, I'm Smile Sardarni, a passionate sketch artist specializing in creating intricate and detailed artworks. With a keen eye for capturing emotions and an innate love for art, I strive to bring stories to life through my sketches.</p>
                 <h2>Background</h2>
                 <p>Ever since I can remember, I have been fascinated by the power of visual expression. As a child, I would spend hours with my sketchbook, capturing the beauty of the world around me. Over the years, my love for sketching grew, and I decided to pursue it as a professional career.</p>
                 <h2>Artistic Style</h2>

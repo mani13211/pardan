@@ -106,7 +106,7 @@ function Login() {
             <div className='container login-container
             form-signin w-100 m-auto"'>
                 <form className='' onSubmit={handlesubmit}>
-                    <p className='Logo'>Rk Draws</p>
+                    <p className='Logo'>SmileDraws</p>
                     <h1 className="h3 mb-3 fw-normal">Please Login in</h1>
 
                     <div className="form-floating mb-3">
