@@ -6,8 +6,6 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { BiDotsVerticalRounded } from 'react-icons/bi'
 import mongoose from 'mongoose';
-//import Collection from '../../models.js/Collection';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { useState } from 'react';
 import { GiConsoleController, GiHand } from 'react-icons/gi';
 
