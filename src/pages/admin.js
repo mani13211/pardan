@@ -82,12 +82,12 @@ function Admin({ images }) {
           <h3>MY Uploads</h3>
           <div className='gallary mt-3'>
             {images.map((i, key) => {
-              return <div key={key} className='pics' onClick={() => {deleteImg(i.title)}} >
+              return <div key={key} className='pics'  >
                 <Image src={i.image} width={0}
                   height={0}
                   sizes="100vw"
                   style={{ width: '100%', height: '100%' }} alt="" />
-                  <RxCross2 className='icon'/>
+                  <RxCross2  onClick={() => {deleteImg(i.title)}} className='icon'/>
                   
               </div>
             })}
