@@ -1,33 +1,35 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import Collection from "../../../models.js/Collection"
-import connectDb from "../../../middleware/middleware"
 
-const handler= async(req,res)=>{
+import fetch from 'node-fetch';
+const cloudinary = require("cloudinary").v2
+const handler = async (req, res) => {
+  let y2 = `${req.body}`
+  if (req.method == "POST") {
+    const apiKey = "746832252631631";
+    const apiSecret = "tDnhvgJcthzeC9SnvLAyc2B0Dm4";
+    const cloudName = "dxmitb6h1";
+    const publicId = req.body;
+    cloudinary.config({
+      cloud_name: cloudName,
+      api_key: apiKey,
+      api_secret: apiSecret
+    });
+    cloudinary.uploader.destroy(eval(y2), (error, result) => {
+      console.log(result)
 
-  if(req.method == "POST"){
-    console.log(req.body)
-  
-    Collection.deleteOne({id:req.body}).then(function (err,res) {
-      if(res){
-      
-        console.log("deleted",req.body)
+      res.status(200).json({ message: result });
 
-      }
-     
-   
+
+
     })
-    res.status(200).json({success:true})
-    console.log("deleted",req.body)
-    
- 
-   
+
   }
-  else{
+  else {
     res.status(200).json("only post applied")
   }
-  
+
 }
- 
 
 
-export default  connectDb(handler)
+
+export default handler

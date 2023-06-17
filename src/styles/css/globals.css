@@ -312,6 +312,21 @@ body .main .submit-btn {
   width: 200px;
   height: 200px;
 }
+.admin-container .gallary {
+  column-count: 4;
+}
+.admin-container .gallary .pics {
+  padding: 0px 4px;
+  position: relative;
+}
+.admin-container .gallary .pics .icon {
+  background: rgba(221, 53, 69, 0.5215686275);
+  color: white;
+  border-radius: 50%;
+  padding: 2px;
+  position: absolute;
+  right: 4px;
+}
 
 .contact-wrapper {
   margin-top: 4rem;

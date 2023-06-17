@@ -403,7 +403,22 @@ $font-1:'Euphoria Script', cursive;
             }
         }
     }
-    
+    .gallary{
+        column-count: 4;
+        .pics{
+            padding: 0px 4px;
+            position: relative;
+            .icon {
+                background: #dd354585;
+                color: white;
+                border-radius: 50%;
+                padding: 2px;
+                position: absolute;
+                right: 4px;
+            }
+        }
+    }
+ 
 
 }
 .contact-wrapper {

@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react'
 import Mobileheader from './components/mobileheader'
 import Navbar from './components/navbar'
-import router,{useRouter} from 'next/router';
+import router, { useRouter } from 'next/router';
 import Image from 'next/image'
-import fs from "fs/promises"
-import path from "path"
 import Link from 'next/link';
+import {RxCross2}  from 'react-icons/rx'
 import mongoose from 'mongoose';
 //import Collection from '../../models.js/Collection';
 import { useState } from 'react'
 import { GiHand } from 'react-icons/gi';
 
 import { IoMdPower } from 'react-icons/io';
-function Admin({ dirs }) {
+function Admin({ images }) {
   useEffect(() => {
     if (!localStorage.getItem("protfolio-token")) {
       router.push("/login")
@@ -24,80 +23,41 @@ function Admin({ dirs }) {
     router.push("/login")
   }
   const [image, setimage] = useState("")
-  const [out, setout] = useState("")
+  const [uploader, setuploader] = useState(null)
   const router = useRouter();
 
-  
-  const [uploading, setUploading] = useState(false)
-  const [selectedImage, setSelectedImage] = useState("")
-  const [selectedFile, setSelectedFile] = useState()
-
-  const handleUpload = async () => {
-    setUploading(true)
+  const handleSubmit =async(e)=>{
+    e.preventDefault()
+    setuploader("1")
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "aqtlxzar");
     try {
-      if (!selectedFile) return
-      const formData = new FormData()
-      formData.append("myImage", selectedFile)
-
-
-      
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/upload1`, {
-                          method: "POST", 
-                          body: formData
-                        });
-
-      console.log(response)
-      setSelectedImage(null)
-      router.reload()
-    } catch (error) {
-      console.log(error.response?.data)
-    }
-    setUploading(false)
-  }
-  const deleteImage = async (imagePath) => {
-    try {
-      const response = await fetch('/api/deleteImage', {
-        method: 'POST',
-        body: JSON.stringify({ imagePath }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+      const response = await fetch("https://api.cloudinary.com/v1_1/dxmitb6h1/upload", {
+        method: "POST", // or 'PUT'
+        body: data,
       });
-  
-      if (response.ok) {
-        console.log('Image deleted successfully');
-      } else {
-        console.error('Failed to delete image');
-      }
+      
+      const result = await response.json();
+      
+      console.log("Success:", result);
     } catch (error) {
-      console.error('Error deleting image:', error);
+      console.error("Error:", error);
     }
-  }
-  
- 
-  const deleteItem=async(imagePath)=>{
-    console.log("coming here")
-    try{
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/delete1`, {
-      method: 'POST',
-      body: JSON.stringify({ imagePath }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    if (response.ok) {
-      console.log('Image deleted successfully');
-      router.reload()
-    } else {
-      console.error('Failed to delete image');
+    setuploader(null)
+    router.reload()
     }
-  } catch (error) {
-    console.error('Error deleting image:', error);
-  }
-    
 
-  }
-
+    const deleteImg=async(id)=>{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/delete`, {
+          method: "POST", // or 'PUT'
+          body: JSON.stringify(id),
+        });
+        const result=await response.json()
+      
+        console.log(result.message)
+        router.reload()
+    }
   return (
     <div className='main '>
       <Mobileheader />
@@ -107,56 +67,31 @@ function Admin({ dirs }) {
 
         <div className='admin-cards-galary container-sm'>
           <h3>Upload new Image</h3>
-          <div className='upload-div'>
 
-          <div className="max-w-4xl mx-auto p-20 space-y-6">
-              <label>
-                <input
-                  type="file"
-                  hidden
-                  onChange={({ target }) => {
-                    if (target.files) {
-                      const file = target.files[0]
-                      setSelectedImage(URL.createObjectURL(file))
-                      setSelectedFile(file)
-                    }
-                  }}
-                />
-                <div className="w-40 aspect-video rounded flex items-center justify-center border-2 border-dashed cursor-pointer">
-                  {selectedImage ? (
-                    <Image src={selectedImage} width={100} height={100} alt="" />
-                  ) : (
-                    <span>Select Image</span>
-                  )}
-                </div>
-              </label>
-
-              <button
-                onClick={handleUpload}
-                disabled={uploading}
-                style={{ opacity: uploading ? ".5" : "1" }}
-                className="bg-red-600 p-3 w-32 text-center rounded text-white"
-              >
-                {uploading ? "Uploading.." : "Upload"}
-              </button>
-
-            </div>
-          </div>
+          <form onSubmit={handleSubmit}>
+            <input type="file" onChange={(e) => {
+              setimage(e.target.files[0])
+            }} />
+            {image &&    (uploader ? <button className='btn btn-danger ' disabled>Uploading</button>: <button className='btn btn-danger '>Upload</button> ) } 
+           
+           
+           
+          </form>
 
 
           <h3>MY Uploads</h3>
-          <div className='img-container'>
-          {dirs.map(item => (
-          
-            <div key={item} className='img-card '>
-               <img src={"/images/" + item} className="text-blue-500 hover:underline"/>
-               <div className='bottom-section'>
-               <div onClick={() => deleteItem( item)} className='deletebtn text-xxl' title='Delete'>X</div>
-               </div>
-            </div>
-          ))}
+          <div className='gallary mt-3'>
+            {images.map((i, key) => {
+              return <div key={key} className='pics' onClick={() => {deleteImg(i.title)}} >
+                <Image src={i.image} width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: '100%', height: '100%' }} alt="" />
+                  <RxCross2 className='icon'/>
+                  
+              </div>
+            })}
           </div>
-
 
         </div>
       </div>
@@ -166,17 +101,36 @@ function Admin({ dirs }) {
 
 
 
-export const getServerSideProps = async () => {
-  const props = { dirs: [] }
-  try {
-    const dirs = await fs.readdir(path.join(process.cwd(), "/public/images"))
-    console.log(dirs)
-    props.dirs = dirs
-    return { props }
-  } catch (error) {
-    return { props }
+
+export async function getServerSideProps() {
+  const apiKey = "746832252631631";
+  const apiSecret = "tDnhvgJcthzeC9SnvLAyc2B0Dm4";
+  const cloudName = "dxmitb6h1";
+
+  const response = await fetch("https://api.cloudinary.com/v1_1/dxmitb6h1/resources/image", {
+    method: "GET",
+    headers: {
+      Authorization: `Basic ${Buffer.from(apiKey + ':' + apiSecret).toString('base64')}`
+    }
+  }).then(r => r.json())
+  const { resources } = response
+  const images = resources.map(i => {
+    const { width, height } = i
+    return {
+      id: i.asset_id,
+      title: i.public_id,
+      image: i.secure_url,
+      width, height
+    }
+  })
+  return {
+    props: {
+      images
+
+    }
+
   }
+
 }
- 
 
 export default Admin
