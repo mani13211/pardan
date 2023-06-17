@@ -361,6 +361,15 @@ $font-1:'Euphoria Script', cursive;
         }
         
     }
+    .admin-container{
+        
+        .gallaryad{
+            column-count: 2  !important;
+          
+        }
+     
+    
+    }
 }
 .admin-container{
     .admin-cards-galary{
@@ -403,23 +412,90 @@ $font-1:'Euphoria Script', cursive;
             }
         }
     }
-    .gallary{
-        column-count: 4;
+    .gallaryad{
         .pics{
             padding: 0px 4px;
+            margin: 3px 0px;
             position: relative;
-            .icon {
-                background: #dd354585;
-                color: white;
-                border-radius: 50%;
-                padding: 2px;
+            .card{
+                height: 100%;
+
+            }
+           
+            .dropdown {
                 position: absolute;
-                right: 4px;
+                right: 0px;
+                top:0px;
+                background: transparent;
+                .icon {
+                    background: transparent;
+                    color: white;
+                    padding: 2px;
+                    font-size: 25px;
+                }
             }
         }
+       
     }
  
 
+}
+.modeladmin {
+    &.close{
+        display: none;
+    }&.open{
+        display: flex;
+    }
+    background: #000000ba;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    left: 0px;
+    z-index: 200;
+    height: 100vh;
+    transform: translate(0px, 0px);
+    
+    align-items: center;
+    justify-content: center;
+    .modal-context {
+        background: white;
+        width: 80%;
+        max-width: 500px;
+        .header {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom:1px solid #dee2e6;
+            border-top-left-radius:1px;
+            border-top-right-radius: 1px;
+        }
+        .body{
+            flex: 1 1 auto;
+            text-align: center;
+            padding: 1rem;
+
+            img{
+                max-width: 200px;
+                max-height: 300px;
+            }
+           
+        }
+        .footer {
+            display: flex;
+            border-top: 1px solid #dee2e6;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            padding:1rem;
+            background-color:white;
+            border-bottom:1px solid #dee2e6;
+            border-bottom-right-radius: 1px;
+            border-bottom-left-radius: 1px;
+        }
+    }
 }
 .contact-wrapper {
     margin-top: 4rem;
