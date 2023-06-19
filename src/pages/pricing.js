@@ -20,7 +20,7 @@ function Pricing() {
                                <img className='card-innerimage img-fluid mb-5' src="standard.png"/>
                                <p className='mb-0'><b>10-15 </b>days </p>
                                <p className='mb-0'><b>A4</b> size paper</p>
-                               <p className='mb-0 mb-5'><b>Unfload</b> Paper delivery</p>
+                               <p className='mb-0 mb-5'><b>Unfold</b> Paper delivery</p>
                                <button className='btn m-auto pring-btns  '>Book Now</button>
                             </div>
                     </div>
@@ -33,7 +33,7 @@ function Pricing() {
                                <img className='card-innerimage img-fluid mb-5' src="fast.png"/>
                                <p className='mb-0'><b>5-10 </b>days </p>
                                <p className='mb-0'><b>A4</b> size paper</p>
-                               <p className='mb-0 mb-5'><b>Unfload</b> Paper delivery</p>
+                               <p className='mb-0 mb-5'><b>Unfold</b> Paper delivery</p>
                                <button className='btn m-auto pring-btns  '>Book Now</button>
                             </div>
                     </div>
@@ -45,7 +45,7 @@ function Pricing() {
 
                                 <ul>
                                     <li><BsCheck2All/> <span className='ms-2'>On time delivery</span></li>
-                                    <li><BsCheck2All/> <span className='ms-2'>Unfload paper  delivery</span></li>
+                                    <li><BsCheck2All/> <span className='ms-2'>Unfold paper  delivery</span></li>
                                     <li><BsCheck2All/> <span className='ms-2'>Use of good ink/pencils</span></li>
                                     <li><BsCheck2All/> <span className='ms-2'>Lamination of paper</span></li>
                                     <li><BsCheck2All/> <span className='ms-2'>Worth of your investment </span></li>
