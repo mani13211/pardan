@@ -32,6 +32,7 @@ export default function App({ Component, pageProps }) {
         <title>{process.env.NEXT_PUBLIC_sitename}</title>
         
         <meta name="description" content="Welcome to smiledraws, the online portfolio of Smilesardarni, a talented sketch artist. Explore a world of intricate drawings, stunning portraits, and captivating illustrations. Get inspired by Smilesardarni's creativity and attention to detail. Commission personalized artwork or browse the gallery for unique pieces. Immerse yourself in the world of artistry and discover the beauty of hand-drawn masterpieces."/>
+        <meta name="keywords" content="Smilesardarni,smile.draws,smiledraws, smile , drwas, smiledrwas sketch artist, smilesardarni drwas"/>
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
