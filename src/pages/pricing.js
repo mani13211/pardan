@@ -57,7 +57,7 @@ function Pricing() {
                                         <img src='fast.png'/>
                                     </div>
                                     <div>
-                                        <h4>RK Sharama</h4>
+                                        <h4>{process.env.NEXT_PUBLIC_sitename}</h4>
                                         <p>Fell free to  choose me as your sketch artist </p>
                                     </div>
                                 </div>
