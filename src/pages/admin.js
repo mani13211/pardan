@@ -146,7 +146,7 @@ export async function getServerSideProps() {
   const apiSecret = "tDnhvgJcthzeC9SnvLAyc2B0Dm4";
   const cloudName = "dxmitb6h1";
 
-  const response = await fetch("https://api.cloudinary.com/v1_1/dxmitb6h1/resources/image", {
+  const response = await fetch("https://api.cloudinary.com/v1_1/dxmitb6h1/resources/image?max_results=100", {
     method: "GET",
     headers: {
       Authorization: `Basic ${Buffer.from(apiKey + ':' + apiSecret).toString('base64')}`
